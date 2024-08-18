@@ -8,4 +8,5 @@ import "github.com/vspirandeli/fullcycle-3-0-mod-4-graphql/internal/database"
 
 type Resolver struct {
 	CategoryDB *database.Category
+	CourseDB   *database.Course
 }
