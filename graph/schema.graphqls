@@ -1,28 +1,31 @@
-# GraphQL schema example
-#
-# https://gqlgen.com/getting-started/
-
-type Todo {
-  id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
-}
-
-type User {
+## Categoria possui vários cursos
+type Category {
   id: ID!
   name: String!
+  description: String
+  courses: [Course!]!
+}
+
+## Curso pertence a uma categoria
+type Course {
+  id: ID!
+  name: String!
+  description: String
+  category: Category!
+}
+
+input NewCategory {
+  name: String!
+  description: String
+}
+
+input NewCourse {
+  name: String!
+  description: String
+  categoryId: ID!
 }
 
 type Query {
-  todos: [Todo!]!
-}
-
-input NewTodo {
-  text: String!
-  userId: String!
-}
-
-type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  categories: [Category!]!
+  courses: [Course!]!
 }
